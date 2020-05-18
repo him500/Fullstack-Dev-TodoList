@@ -3,13 +3,13 @@ from django.http import HttpResponse
 from .models import TodoList
 
 # Create your views here.
-def home_view(request,*args,**kwargs):
-    # return HttpResponse("<h1>HELLO WORLd</h1>")
-    return render(request,"index.html",{})
+# def home_view(request,*args,**kwargs):
+#     # return HttpResponse("<h1>HELLO WORLd</h1>")
+#     return render(request,"index.html",{})
 
-def contact_view(request,*args,**kwargs):
+# def contact_view(request,*args,**kwargs):
 
-    return HttpResponse("<h1>Contact us</h1>")
+#     return HttpResponse("<h1>Contact us</h1>")
 
 def index(request): 
     todos = TodoList.objects.all() 
