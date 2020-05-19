@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import TodoList, status_values, label_values
+from .models import TodoList
 
 label_json=[
 
@@ -16,10 +16,10 @@ status_json=[
     {'status':'Completed'}
 ]
 
-def index(request): 
+def home(request): 
     todos  = TodoList.objects.all() 
-    labelv = label_values.objects.all()
-    statusv = status_values.objects.all()
+    # labelv = label_values.objects.all()
+    # statusv = status_values.objects.all()
 
     # all the data loaded in todos
 
@@ -32,14 +32,14 @@ def index(request):
             label    = request.POST["label_select"] #category
             status   = request.POST["status_select"]
 
-            Todo = TodoList(title=title, due_date=due_date)
+            Todo = TodoList(title=title, due_date=due_date, label=label, status=status)
             Todo.save() #saving the todo
 
-            labelO = label_values(label=label)
-            labelO.save() #saving the todo
+            # labelO = label_values(label=label)
+            # labelO.save() #saving the todo
 
-            statusO = status_values(status=status)
-            statusO.save() #saving the todo
+            # statusO = status_values(status=status)
+            # statusO.save() #saving the todo
             
             return redirect("/") #reloading the page
 
@@ -51,4 +51,4 @@ def index(request):
                 todo.delete() #deleting todo
 
     # return render(request, "index.html", {"todos": todos, "labelv":labelv, "statusv":statusv})
-    return render(request, "index.html", {"todos": todos, 'labelv':label_json, 'statusv':status_json})
+    return render(request, "pages/index.html", {"todos": todos, 'labelv':label_json, 'statusv':status_json})
