@@ -35,20 +35,17 @@ def home(request):
             Todo = TodoList(title=title, due_date=due_date, label=label, status=status)
             Todo.save() #saving the todo
 
-            # labelO = label_values(label=label)
-            # labelO.save() #saving the todo
-
-            # statusO = status_values(status=status)
-            # statusO.save() #saving the todo
-            
             return redirect("/") #reloading the page
 
         if "taskDelete" in request.POST:
 
             checkedlist = request.POST["checkedbox"] 
-            for todo_title in checkedlist:
-                todo = TodoList.objects.get(title=int(todo_title)) 
-                todo.delete() #deleting todo
+            print(checkedlist)
+                # print(todo_title)
+                # todo = TodoList.objects.get(title=todo_title) 
+                # todo.delete() #deleting todo
+            todo = TodoList.objects.get(title=checkedlist) 
+            todo.delete() #deleting todo
 
     # return render(request, "index.html", {"todos": todos, "labelv":labelv, "statusv":statusv})
     return render(request, "pages/index.html", {"todos": todos, 'labelv':label_json, 'statusv':status_json})
