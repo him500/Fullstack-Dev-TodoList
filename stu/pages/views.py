@@ -2,19 +2,25 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import TodoList, status_values, label_values
 
-# Create your views here.
-# def home_view(request,*args,**kwargs):
-#     # return HttpResponse("<h1>HELLO WORLd</h1>")
-#     return render(request,"index.html",{})
+label_json=[
 
-# def contact_view(request,*args,**kwargs):
+    {'label':'Personal'},
+    {'label':'Work'},
+    {'label':'Shopping'},
+    {'label':'Others'}
 
-#     return HttpResponse("<h1>Contact us</h1>")
+]
+status_json=[
+    {'status':'In progress'},
+    {'status':'New'},
+    {'status':'Completed'}
+]
 
 def index(request): 
     todos  = TodoList.objects.all() 
     labelv = label_values.objects.all()
     statusv = status_values.objects.all()
+
     # all the data loaded in todos
 
     if request.method == "POST":
@@ -44,4 +50,5 @@ def index(request):
                 todo = TodoList.objects.get(title=int(todo_title)) 
                 todo.delete() #deleting todo
 
-    return render(request, "index.html", {"todos": todos, "labelv":labelv, "statusv":statusv})
+    # return render(request, "index.html", {"todos": todos, "labelv":labelv, "statusv":statusv})
+    return render(request, "index.html", {"todos": todos, 'labelv':label_json, 'statusv':status_json})
