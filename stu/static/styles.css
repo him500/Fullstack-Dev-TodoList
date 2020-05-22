@@ -298,3 +298,33 @@ footer a {
     outline: none;
     padding: 0 100px;
 }
+
+#sidebar{
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background-color: #303030;
+    left:-200px;
+    transition-duration: .5s;
+
+}
+#sidebar ul{
+    padding: 0;
+}
+#sidebar ul li {
+    border-bottom:1px solid rgba(109, 109, 109, 0.2);
+    color: #bebebe ;
+    list-style: none;
+    padding: 15px 10px ;
+}
+#sidebar.active{
+    left: 0px;
+    transition-duration: .5s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1.5);
+}
+.toggle-btn{
+    position: absolute;
+    left :230px;
+    top:15px;
+    font-size: 45px;
+}
