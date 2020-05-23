@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import TodoList
+from .models import TodoList 
+from _datetime import date
 
 label_json=[
 
@@ -17,21 +18,26 @@ status_json=[
 ]
 
 def home(request): 
-    todos  = TodoList.objects.all() 
-    # labelv = label_values.objects.all()
-    # statusv = status_values.objects.all()
+    todos  = TodoList.objects.all()
+    current_date=date.today()
 
-    # all the data loaded in todos
+    for i in range(len(todos)):
+        ddate=todos[i].due_date
+        if current_date.year >= ddate.year and current_date.month >= ddate.month and current_date.day > ddate.day:
+            
+            todos[i].archive = True
+            todos[i].save()
 
     if request.method == "POST":
 
         if "taskAdd" in request.POST: 
             
             title    = request.POST["description"] #title
-            due_date = str(request.POST["date"]) #date
+            due_date = request.POST["date"] #date
             label    = request.POST["label_select"] #category
             status   = request.POST["status_select"]
 
+            # print("Start",list(map(int, due_date.split("-"))),"end")
             Todo = TodoList(title=title, due_date=due_date, label=label, status=status)
             Todo.save() #saving the todo
 
@@ -40,14 +46,15 @@ def home(request):
         if "taskDelete" in request.POST:
 
             checkedlist = request.POST["checkedbox"] 
-            print(checkedlist)
-                # print(todo_title)
-                # todo = TodoList.objects.get(title=todo_title) 
-                # todo.delete() #deleting todo
-            todo = TodoList.objects.get(title=checkedlist) 
+            print(checkedlist,len(checkedlist))
+            todo = TodoList.objects.filter(title=checkedlist) 
             todo.delete() #deleting todo
 
-    # return render(request, "index.html", {"todos": todos, "labelv":labelv, "statusv":statusv})
+            return redirect("/") #reloading the page
+
+    # for todo in TodoList.objects.all():
+    #     print(todo.archive)
+
     return render(request, "pages/index.html", {"todos": todos, 'labelv':label_json, 'statusv':status_json})
 
 
