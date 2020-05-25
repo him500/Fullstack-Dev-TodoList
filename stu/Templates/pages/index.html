@@ -12,7 +12,7 @@
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" type="text/css" href="static/styles.css">
-    <script src="static/script.js"></script>
+    <script src="static/script.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -23,17 +23,18 @@
             </div>
             <ul>
                 <li>Active Tasks </li>
-                <li>Archives</li>
+                <li id='archives' onclick="togglearchive()">Archives</li>
                 <li>Thrash</li>
             </ul>
         </div>
         <div class="container">
-            
+
             <div class="content">
                 <h1>Todo List</h1>
                 <p class="tagline">Django based app</p>
 
                 <form action="" method="post">
+                    <div id="input_form">
                     {% csrf_token %}
                     <!-- csrf token for basic security -->
                     <div class="inputContainer">
@@ -75,7 +76,7 @@
                     </div>
 
                     <div class="inputContainer half last right">
-                        <input type="date" id="date" class="taskDate" name="date">
+                        <input type="date" id="date" class="taskDate" name="date" required>
                         <label for="dueDate">Due Date</label>
                     </div>
 
@@ -102,6 +103,23 @@
                         </li>
                         {% endfor %}
                     </ul><!-- taskList -->
+                </div>
+                    <!-- archive task list  -->
+                    <ul id='archive_display' class="taskList hidden_below">
+                        {% for todo in todos %}
+                        <!-- django template lang - for loop -->
+
+                        {% if todo.archive == True %}
+                        <li class="taskItem">
+                            <input type="checkbox" class="taskCheckbox" name="checkedbox" value="{{ todo.title }}">
+                            <label for="{{ todo.title }}"><span class="complete-">{{ todo.title }}</span></label>
+                            <span class="category-{{ todo.status }}">{{ todo.status }}</span>
+                            <strong class="taskDate"><i class="fa fa-calendar"></i>{{ todo.due_date }}</strong>
+                        </li>
+                        {% endif%}
+
+                        {% endfor %}
+                    </ul><!-- archive taskList -->
                 </form>
             </div><!-- content -->
         </div><!-- container -->
