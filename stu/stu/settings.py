@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'material.admin',
+    # 'material.admin.default',
     # third party apps
     'pages',
 ]
