@@ -12,6 +12,11 @@
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" type="text/css" href="static/styles.css">
+
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <script src="static/script.js" type="text/javascript"></script>
 </head>
 
@@ -79,9 +84,23 @@
                         <input type="date" id="date" class="taskDate" name="date" required>
                         <label for="dueDate">Due Date</label>
                     </div>
-
                     <!-- add and delete button -->
-                    <div class="row">
+                    <div class="button-container">
+                        <button class="mdc-button mdc-button--raised next" name="taskAdd" type="submit">
+                            <div class="mdc-button__ripple"></div>
+                            <span class="mdc-button__label">
+                              ADD
+                            </span>
+                        </button>
+                        <button class="mdc-button cancel" name="taskDelete" formnovalidate="" type="submit"
+                        onclick="$('input#sublist').click();">
+                          <div class="mdc-button__ripple"></div>
+                          <span class="mdc-button__label">
+                            DELETE
+                          </span>
+                        </button>
+                    </div>
+                    <!-- <div class="row">
                         <button class="taskAdd" name="taskAdd" type="submit">
                             <i class="fa fa-plus icon"></i>Add
                             task</button>
@@ -90,7 +109,7 @@
                             onclick="$('input#sublist').click();">
                             <i class="fa fa-trash-o icon"></i>Delete
                             Tasks</button>
-                    </div>
+                    </div> -->
                     <!-- display code  -->
                     <ul class="taskList">
                         {% for todo in todos %}
@@ -121,6 +140,7 @@
                         {% endfor %}
                     </ul><!-- archive taskList -->
                 </form>
+                
             </div><!-- content -->
         </div><!-- container -->
     </div>
