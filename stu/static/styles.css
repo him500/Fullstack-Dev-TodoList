@@ -37,7 +37,19 @@ body {
     clear: both;
     overflow: hidden;
 }
-
+.button-container{
+    /* display: block;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    clear: both;
+    overflow: hidden; */
+    -ms-transform: translate(-20%, -20%);
+    transform: translate(-20%, -20%);
+}
+.button-container .mdc-button.mdc-button--raised{
+    background-color: #05386B;
+}
 .half {
     width: 50%;
     float: left;
@@ -423,4 +435,14 @@ footer a {
 
 .hide {
     display: none;
+}
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 300px;
+    margin: auto;
+  }
+  
+.button-container button {
+    margin: 3px;
 }
