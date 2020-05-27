@@ -112,6 +112,7 @@
                     </div> -->
                     <!-- display code  -->
                     <ul class="taskList">
+                        
                         {% for todo in todos %}
                         <!-- django template lang - for loop -->
                         <li class="taskItem">
@@ -125,9 +126,9 @@
                     </div>
                     <!-- archive task list  -->
                     <ul id='archive_display' class="taskList hidden_below">
+                        <h2>Archives</h2>
                         {% for todo in todos %}
                         <!-- django template lang - for loop -->
-
                         {% if todo.archive == True %}
                         <li class="taskItem">
                             <input type="checkbox" class="taskCheckbox" name="checkedbox" value="{{ todo.title }}">

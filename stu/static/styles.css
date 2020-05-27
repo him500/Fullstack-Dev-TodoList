@@ -16,6 +16,7 @@ body {
     background: #2980b9;
     background-image: linear-gradient(40deg, rgb(224, 203, 247) 0%, rgb(24, 47, 180) 100%);
     font-family: 'Open Sans', sans-serif;
+    height:100vh
 }
 
 /* super basic grid structure */
@@ -413,6 +414,7 @@ footer a {
     left: 230px;
     top: 15px;
     font-size: 45px;
+    z-index: 10;
 }
 
 .hidden_below {
@@ -426,7 +428,12 @@ footer a {
     height: 100%;
     background-color: white;
 }
-
+@media only screen and (max-width:767px)
+{
+    #archive_display{
+        width: 540px;
+    }
+}
 #archive_display.active {
     top: 20px;
     transition-duration: .5s;
