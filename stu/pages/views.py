@@ -66,9 +66,9 @@ def index(request):
             
             todos[i].archive = True
             todos[i].save()
-    print("task saved2")
+    
     if request.method == "POST":
-        print("task saved1")
+        
 
         if "taskAdd" in request.POST: 
             
@@ -80,24 +80,32 @@ def index(request):
             # print("Start",list(map(int, due_date.split("-"))),"end")
             Todo = TodoList(title=title, due_date=due_date, label=label, status=status)
             Todo.save() #saving the todo
-            print("task saved")
+            # print("task saved")
 
-            return redirect("/") #reloading the page
+            return redirect("/") #reloading the page 
 
+    return render(request, "pages/indexN.html", {"todos": todos, 'labelv':label_json, 'statusv':status_json})
+
+def display(request):
+    todos=TodoList.objects.all()
+    current_date=date.today()
+
+    for i in range(len(todos)):
+        ddate=todos[i].due_date
+        if current_date.year >= ddate.year and current_date.month >= ddate.month and current_date.day > ddate.day:
+            
+            todos[i].archive = True
+            todos[i].save()
+    
+    if request.method == "POST":
         if "taskDelete" in request.POST:
+            # print("here")
 
             checkedlist = request.POST["checkedbox"] 
             print(checkedlist,len(checkedlist))
             todo = TodoList.objects.filter(title=checkedlist) 
             todo.delete() #deleting todo
 
-            return redirect("/") #reloading the page
+            return redirect("../display/") #reloading the page
 
-    # for todo in TodoList.objects.all():
-    #     print(todo.archive)
-
-    return render(request, "pages/indexN.html", {"todos": todos, 'labelv':label_json, 'statusv':status_json})
-
-def display(request):
-    todos=TodoList.objects.all()
     return render(request, "pages/display.html", {"todos": todos})
