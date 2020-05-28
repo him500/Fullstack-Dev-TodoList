@@ -1,8 +1,11 @@
 /* app */
 
 body {
-    /* background: #666;
-    background-image: linear-gradient(40deg, rgb(224, 203, 247) 0%, rgb(24, 47, 180) 100%); */
+    /* background: #666;*/
+    /* height: 700px; */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(40deg, rgb(100, 35, 168) 0%, rgb(62, 83, 202) 100%);
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -14,6 +17,10 @@ body {
 /* super basic grid structure */
 
 .container {
+    background-color: #fff;
+    /* margin: 10px; */
+    padding: 30px;
+    border-radius: 5px;
     display: inline-block;
     min-width: 400px;
     width: 500px;
