@@ -1,0 +1,103 @@
+/* app */
+
+body {
+    /* background: #666;*/
+    /* height: 700px; */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(40deg, rgb(100, 35, 168) 0%, rgb(62, 83, 202) 100%);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.navbar-header{
+    /* position: relative; */
+    left: 70%;
+    text-align: center;
+}
+/* super basic grid structure */
+
+.container {
+    background-color: #fff;
+    /* margin: 10px; */
+    padding: 30px;
+    border-radius: 5px;
+    display: inline-block;
+    min-width: 400px;
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+
+
+.button-container {
+    transform: translate(40%,0%);
+  }
+  
+.button-container button {
+    margin: 3px;
+    font-size: small;
+}
+ul.taskList {
+    list-style: none;
+    padding: 0 20px;
+}
+
+li.taskItem {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 15px 0;
+    color: #777;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.taskList .taskItem:nth-child(even) {
+    background: #fcfcfc;
+}
+
+.taskCheckbox {
+    margin-right: 10px;
+}
+.complete-true {
+    text-decoration: line-through;
+    color: #bebebe;
+}
+
+.taskList .taskDate {
+    color: #95a5a6;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+    margin-left: 41px;
+}
+
+.fa-calendar {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+[class*='category-'] {
+    display: inline-block;
+    font-size: 15px;
+    background: #0b5db9;
+    vertical-align: middle;
+    color: #fff;
+    padding: 5px;
+    height: 30px;
+    width: 110px;
+    text-align: center;
+    border-radius: 8px;
+    float: right;
+    font-weight: 530;
+    margin-right: 20px;
+}
+
+.category-New {
+    background: rgb(120, 8, 185);
+}
+
+.category-Completed {
+    background: #048061;
+}

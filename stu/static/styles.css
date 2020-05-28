@@ -13,12 +13,17 @@ html {
 }
 
 body {
-    background: #2980b9;
+    background: #666;
     background-image: linear-gradient(40deg, rgb(224, 203, 247) 0%, rgb(24, 47, 180) 100%);
     font-family: 'Open Sans', sans-serif;
     height:100vh
 }
 
+.navbar-header{
+    position: relative;
+    left: 30%;
+    text-align: center;
+}
 /* super basic grid structure */
 
 .container {
