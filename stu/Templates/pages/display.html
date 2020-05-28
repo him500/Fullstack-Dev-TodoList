@@ -41,6 +41,8 @@
 
         <div class="container">
           
+          <form action="" method="post">
+            {% csrf_token %} 
             <!-- display code  -->
             <ul class="taskList">
                 {% for todo in todos %}
@@ -53,6 +55,17 @@
                 </li>
                 {% endfor %}
             </ul><!-- taskList -->
+
+            <div class="button-container">
+
+              <button class="mdc-button mdc-button--outlined" name="taskDelete" formnovalidate="" type="submit"
+              onclick="$('input#sublist').click();">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">DELETE</span>
+              </button>
+            </div>
+
+          </form>
            
         </div>  
     </div>
