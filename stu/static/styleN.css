@@ -1,0 +1,33 @@
+/* app */
+
+body {
+    /* background: #666;
+    background-image: linear-gradient(40deg, rgb(224, 203, 247) 0%, rgb(24, 47, 180) 100%); */
+    font-family: 'Open Sans', sans-serif;
+}
+
+.navbar-header{
+    /* position: relative; */
+    left: 70%;
+    text-align: center;
+}
+/* super basic grid structure */
+
+.container {
+    display: inline-block;
+    min-width: 400px;
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+
+
+.button-container {
+    transform: translate(40%,0%);
+  }
+  
+.button-container button {
+    margin: 3px;
+    font-size: small;
+}
