@@ -1,6 +1,8 @@
 new MDCRipple(document.querySelector('.cancel'));
 new MDCRipple(document.querySelector('.next'));
 
+
+const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
 function togglearchive(){
     console.log("AU");
     document.getElementById("archives").classList.toggle('gold');
@@ -12,9 +14,4 @@ function toggleSidebar(){
     console.log("FU");
     document.getElementById("sidebar").classList.toggle('active');
    
-}
-
-function getBaseAddress(){
-    var addr=location.hostname;
-    console.log(addr);
 }
