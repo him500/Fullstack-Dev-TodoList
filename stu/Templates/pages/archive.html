@@ -25,13 +25,13 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
               <ul class="nav navbar-nav">
-                <li ><a href="../" id="navbar-header">TodoList</a></li>
-                <li class="active"><a href="">Display</a></li>
-                <li><a href="/archive">Archived</a></li>
+                <li ><a href="../">Home</a></li>
+                <li ><a href="/display">Display</a></li>
+                <li class='active'><a href="#">Archived</a></li>
               </ul>
-              <!-- <div class="navbar-header">
+              <div class="navbar-header">
                 <a class="navbar-brand" href="#">TodoList</a>
-              </div> -->
+              </div>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -47,12 +47,16 @@
             <ul class="taskList">
                 {% for todo in todos %}
                 <!-- django template lang - for loop -->
+                {% if todo.archive == True %}
+
                 <li class="taskItem">
                     <input type="checkbox" class="taskCheckbox" name="checkedbox" value="{{ todo.title }}">
                     <label for="{{ todo.title }}"><span class="complete-">{{ todo.title }}</span></label>
                     <span class="category-{{ todo.status }}">{{ todo.status }}</span>
                     <strong class="taskDate"><i class="fa fa-calendar"></i>{{ todo.due_date }}</strong>
                 </li>
+                {% endif%}
+
                 {% endfor %}
             </ul><!-- taskList -->
 

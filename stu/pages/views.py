@@ -109,3 +109,26 @@ def display(request):
             return redirect("../display/") #reloading the page
 
     return render(request, "pages/display.html", {"todos": todos})
+def archive(request):
+    todos=TodoList.objects.all()
+    current_date=date.today()
+
+    for i in range(len(todos)):
+        ddate=todos[i].due_date
+        if current_date.year >= ddate.year and current_date.month >= ddate.month and current_date.day > ddate.day:
+            
+            todos[i].archive = True
+            todos[i].save()
+    
+    if request.method == "POST":
+        if "taskDelete" in request.POST:
+            # print("here")
+
+            checkedlist = request.POST["checkedbox"] 
+            print(checkedlist,len(checkedlist))
+            todo = TodoList.objects.filter(title=checkedlist) 
+            todo.delete() #deleting todo
+
+            return redirect("../archive/") #reloading the page
+
+    return render(request, "pages/archive.html", {"todos": todos})
